@@ -1,0 +1,296 @@
+% --------------------------------------------------------------
+% This is all preamble stuff that you don't have to worry about.
+% Head down to where it says "Start here"
+% --------------------------------------------------------------
+ 
+\documentclass[12pt]{article}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{soul}
+ 
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{lastpage}
+\definecolor{smithblue}{HTML}{002855}
+\definecolor{smithyellow}{HTML}{F2A900}
+
+\usepackage[parfill]{parskip}
+\parskip=\baselineskip
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}[1][{\color{red} Solution:}]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries}]}{\end{trivlist}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Submitted by: \teamName\\
+\collaborators}
+\rhead{CSC250 Spring 2023 - Homework 01\\
+\today{}}
+\cfoot{p. \thepage \ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+ 
+
+%\newcommand\solution[1]{\vskip 5pt \noindent{\color{red}{\bf Solution:}} \emph{#1}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\newcommand{\teamName}{Team 7} %replace with your team name
+
+\newcommand{\collaborators}{
+%replace with your member names
+	Team: \textit{Sabrina Hatch, Ramsha Rauf, Shalom Mhanda}
+}
+
+
+% --------------
+% Exercise 1
+% --------------
+\begin{exercise}{1}
+For each of the following English arguments, express the argument in terms of \textbf{propositional logic} and determine whether the argument is valid or invalid:
+
+\begin{enumerate}[(a)]
+
+
+\item If it is sunny and you have finished your homework, you always go for a run. Yesterday, you did not run. I conclude that you did not finish your homework; 
+    % -------------------------------------------
+    %  Write your answer to Q1a below
+    % -------------------------------------------
+    \begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+\begin{table}[h]
+\begin{tabular}{lllll}
+sunny & homework & sunny \& homework & run & $(sunny \& homework) \rightarrow run$ \\
+0     & 0        & 0                 & 0   & 1                                   \\
+0     & 1        & 0                 & 0   & 1                                     \\
+0     & 0        & 0                 & 1   & 1                                     \\
+0     & 1        & 0                 & 1   & 1                                     \\
+1     & 0        & 0                 & 0   & 1                                     \\
+1     & 1        & 1                & 0    & 0                                \\
+1     & 0        & 0                 & 1   & 1                                     \\
+1     & 1        & 1                 & 1   & 1                                    
+\end{tabular}
+\end{table}
+            Since we always go for a run when it is sunny and after finishing our homework,  we can disregard when this implication is false (line 6). Since we did not run (run is false), we now focus on lines 1, 2, and 5. There exists an instance in line 2 in which homework is finished when we did not go for a run. Therefore, the argument is invalid. 
+        \end{proof}
+
+    
+    \end{solution}
+
+
+    \item Every time you drink coffee after 5 PM, you lose sleep; When you lose sleep, you forget things; You forgot your wallet at home, so I can say for sure that yesterday you had a coffee after 5 PM.
+    
+    % -------------------------------------------
+    %  Write your answer to Q1b below
+    % -------------------------------------------
+    \begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+        \begin{table}[h]
+\begin{tabular}{lllll}
+coffee & lose sleep & forget things & coffee-\textgreater{}lose sleep & lose sleep-\textgreater{}forget things \\
+0      & 0          & 0             & 1                               & 1                                      \\
+0      & 1          & 0             & 1                               & 0                                      \\
+0      & 0          & 1             & 1                               & 1                                      \\
+0      & 1          & 1             & 1                               & 1                                      \\
+1      & 0          & 0             & 0                               & 1                                      \\
+1      & 1          & 0             & 1                               & 0                                      \\
+1      & 0          & 1             & 0                               & 1                                      \\
+1      & 1          & 1             & 1                               & 1                                     
+\end{tabular}
+\end{table}
+            Since we are told that if we drink coffee after 5 pm then we will lose sleep, we can disregard the instances where this implication is false (lines 5 and 7). We are also told that if we lose sleep then we forget things so we can ignore the instances where this implication is false (lines 2 and 6). Based on the given information that we forgot our wallet we can ignore all the instances when forgetting things is false leaving us with lines 3, 4, and 8. Looking at these lines we see that there are some instances when we don't drink coffee after 5 pm but still forget our things hence this statement is invalid. 
+        \end{proof}
+    \end{solution}
+    
+\end{enumerate}
+\end{exercise}
+
+\clearpage
+
+% --------------
+% Exercise 2
+% --------------
+\begin{exercise}{2}
+
+Determine whether each of the following is true or false. If it is true, prove it. If it is false, give a counterexample.
+
+\begin{enumerate}[(a)]
+	\item Every odd number has an even divisor
+	% -------------------------------------------
+    %  Write your answer to Q2a below
+    % -------------------------------------------
+    \begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+            False, 5 is an odd number and has 1 and 5 as its divisors therefore the statement is false. 
+        \end{proof}
+    \end{solution}
+
+    \item The multiplication of two even numbers is even
+	% -------------------------------------------
+    %  Write your answer to Q2b below
+    % -------------------------------------------
+    \begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+            True. 
+            \\Let a be an even number 2k for some integer k. 
+            \\Let b be an even number 2l for some integer l. 
+            \\The product of a and b is:
+            $$a * b = 2k * 2l$$
+            $$a * b = 2 (2kl)$$
+            Therefore the multiplication of two even numbers is even.
+        \end{proof}
+    \end{solution}    
+        
+	\item The multiplication of two odd numbers is odd
+	% -------------------------------------------
+    %  Write your answer to Q2c below
+
+    % -------------------------------------------
+    \begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+            \\True. 
+            \\Let a be an odd number 2k + 1 for some integer k. 
+            \\Let b be an odd number 2l + 1 for some integer l. 
+            \\The product of a and b is:
+            $$a * b = (2k + 1) * (2l + 1)$$
+            $$a * b = 4kl + 2k + 2l + 1 $$
+            $$a * b = 2(2kl + k + l) + 1 $$
+            Assuming that 2kl + k + l is some integer that we are multiplying by 2, this gives us an even number. When we add 1 to that even number we get an odd number by the definition of an odd number. Therefore the statement is true. 
+        \end{proof}
+    \end{solution}
+
+     \item The set of Natural numbers $\mathbf{N}=\{1,2,3,...\} $ is finite.
+     \\
+     You may assume that:\\
+        The number 1 is a natural number and that
+        the set $\mathbf{N}$ can be constructed by adding 1 to any natural number to construct a new number in $\mathbf{N}$. Also, $\mathbf{N}$ is totally ordered (no two distinct numbers are equal, and there is a strict order between any two values);
+	% -------------------------------------------
+    %  Write your answer to Q2d below
+    % -------------------------------------------
+    \begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+            False because the set N can never reach an end. Assuming that some arbitrary number, k, is the biggest number in our set of natural numbers. We will always be able to increment this number by 1 (per the given) and get a new sequential number k+1, also in N. Because k  is arbitrary, this will work for any "largest number" in the set of natural numbers, and thus the sequence can continue infinitely. Since this contradicts the original statement, the statement is false. 
+        \end{proof}
+    \end{solution}   
+    
+	\end{enumerate}
+\end{exercise}
+
+\clearpage
+
+% --------------
+% Exercise 3
+% --------------
+\begin{exercise}{3}
+
+    The \textbf{pigeonhole principle} is the following somewhat intuitive observation: 
+    \begin{center}
+    If you have $n$ pigeons in $k$ pigeonholes and if $n>k$,\\then there is at least one pigeonhole that contains more than one pigeon.
+    \end{center}
+    Even though this observation seems obvious, it's a good idea to prove it. Prove the pigeonhole principle using a proof by contradiction.
+        
+\end{exercise}
+
+% -------------------------------------------
+%  Write your answer to Q3 below
+% -------------------------------------------
+\begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+            We will prove this by contradiction. \\Let's assume that we have n pigeons in k pigeonholes and if $n > k$, then there will never be a pigeonhole that contains more than one pigeon. Meaning that all the pigeonholes will either contain 1 pigeon or be empty and can be written as $n \leq k$.\\ \\This statement is false because we can never have $n > k$ at the same time as $  n \leq k$. Thus our assumption is false. Therefore the initial statement, if you have $n$ pigeons in $k$ pigeonholes and if $n>k$, then there is at least one pigeonhole that contains more than one pigeon, is true.
+         
+        \end{proof}
+    \end{solution}
+
+\clearpage
+
+% --------------
+% Exercise 4
+% --------------
+
+\begin{exercise}{4} Use Induction to prove the next statements:
+
+\begin{enumerate}[(a)]
+	\item prove that $1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2}$
+	% -------------------------------------------
+    %  Write your answer to Q4a below
+    % -------------------------------------------
+    \begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+         \ \\
+            \begin{itemize}
+               \item First, we need a base case which we will define as n = 1. Thus we find: 1 = 1(2)/2 = 1. The base case follows the formula.
+                \item We assume n=k holds such that:  $1 + 2 + 3 + \dots + k = \frac{k(k+1)}{2}$ (induction hypothesis)
+                \item We want to prove that n = k + 1 holds such that: $1 + 2 + 3 + \dots + k + (k+1)= \frac{(k+1)((k+1) + 1)}{2}$
+                    \begin{itemize} [label=\ding{212}]
+                        \item $1 + 2 + 3 + \dots + k + (k+1)$ by substitution of n = k + 1. 
+                        \item = $\frac{k(k+1)}{2} + (k+1)$ by the induction hypothesis.
+                        \item = $\frac{k(k+1) + 2(k+1)}{2} $ from factoring by 2/2 and distribution of division over addition. 
+                        \item = $\frac{(k+2)(k+1)}{2}$ by distribution of multiplication over addition. 
+                        \item = $\frac{(k+1)(k+2)}{2}$ by the commutative property of multiplication. 
+                        \item = $\frac{(k+1)(k+1) + 1}{2}$
+                    \end{itemize}
+            \end{itemize}
+        \end{proof}
+    \end{solution}
+
+\item  Prove that $\sum^{n}_{i=1}(2i - 1) = n^2$
+
+
+	% -------------------------------------------
+    %  Write your answer to Q4b below
+    % -------------------------------------------
+\begin{solution} 
+        \begin{proof}[\unskip\nopunct]
+        \ \\
+        \begin{itemize}
+               \item First, we need a base case which we will define as n = 1 because we are given the starting index of i = 1. Thus, we get $(2i-1) = (2(1)-1) = 1 = 1^2$ . The base case follows the formula.
+
+               \item Assume that n = k such that this is true(induction hypothesis): $$\sum^{k}_{i=1}(2i - 1) = k^2$$. 
+                \item We want to prove that it is also true for k+1 such that: $$\sum^{k+1}_{i=1}(2i - 1) = (k+1)^2$$
+                    \begin{itemize}[label=\ding{212}]
+                        \item $ = (2(1)-1) + (2(2)-1) + \dots + (2k-1) + (2(k+1)-1) $ We can rewrite it like this. 
+                        \item = $k^2 + (2(k+1)-1)$ We manipulate the left side using the induction hypothesis.
+                        \item = $k^2 + 2k + 1$ by distribution of 2. 
+                        \item = $(k+1)(k+1)$ by distributive property we factored. 
+                        \item = $(k+1)^2$ by rewriting with properties of exponent. 
+                    \end{itemize}
+            \end{itemize}
+            
+        \end{proof}
+    \end{solution}
+        
+\end{enumerate}        
+\end{exercise}
+
+% -----------------
+% References
+% -----------------
+\vfill
+
+\begin{thebibliography}{9}
+\bibitem{sipser} 
+Sipser, Michael. 
+\textit{Introduction to the Theory of Computation.} 
+Course Technology, 2005. ISBN: 9780534950972. 
+
+\end{thebibliography}
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+ 
+\end{document}
